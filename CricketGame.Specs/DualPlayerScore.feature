@@ -4,11 +4,37 @@
 	I want to be told the winner of the game
 
 @mytag
-Scenario: Scores of both player will be zero when game starts
-	When Players start the game of cricket
-	Then the scores of both players will be 0
 
-Scenario: Player1 should be able to score runs
+Scenario: Player1 will win the match
 	Given Player1 has started a game of cricket
-	When Player1 scores 4 runs
-	Then The player1 score should be 4
+	And Player1 scores 4 runs
+	And Player1 scores 4 runs
+	And Player1 gets out
+	And Player2 has started a game of cricket
+	And Player2 scores 4 runs
+	And Player2 scores 3 runs
+	When Player2 gets out
+	Then the player1 score should win
+
+Scenario: Player2 will win the match
+	Given Player1 has started a game of cricket
+	And Player1 scores 4 runs
+	And Player1 scores 3 runs
+	And Player1 gets out
+	And Player2 has started a game of cricket
+	And Player2 scores 4 runs
+	And Player2 scores 4 runs
+	When Player2 gets out
+	Then the player2 score should win
+
+
+Scenario: Similar scores will result in tie
+	Given Player1 has started a game of cricket
+	And Player1 scores 4 runs
+	And Player1 scores 3 runs
+	And Player1 gets out
+	And Player2 has started a game of cricket
+	And Player2 scores 4 runs
+	And Player2 scores 3 runs
+	When Player2 gets out
+	Then the match should be tied

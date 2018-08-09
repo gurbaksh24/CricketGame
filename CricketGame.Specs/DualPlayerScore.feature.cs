@@ -72,38 +72,94 @@ namespace CricketGame.Specs
             this.ScenarioTearDown();
         }
         
-        [Xunit.FactAttribute(DisplayName="Scores of both player will be zero when game starts")]
+        [Xunit.FactAttribute(DisplayName="Player1 will win the match")]
         [Xunit.TraitAttribute("FeatureTitle", "DualPlayerScore")]
-        [Xunit.TraitAttribute("Description", "Scores of both player will be zero when game starts")]
+        [Xunit.TraitAttribute("Description", "Player1 will win the match")]
         [Xunit.TraitAttribute("Category", "mytag")]
-        public virtual void ScoresOfBothPlayerWillBeZeroWhenGameStarts()
+        public virtual void Player1WillWinTheMatch()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Scores of both player will be zero when game starts", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Player1 will win the match", new string[] {
                         "mytag"});
-#line 7
-this.ScenarioSetup(scenarioInfo);
 #line 8
- testRunner.When("Players start the game of cricket", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+this.ScenarioSetup(scenarioInfo);
 #line 9
- testRunner.Then("the scores of both players will be 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Given("Player1 has started a game of cricket", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 10
+ testRunner.And("Player1 scores 4 runs", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 11
+ testRunner.And("Player1 scores 4 runs", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 12
+ testRunner.And("Player1 gets out", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 13
+ testRunner.And("Player2 has started a game of cricket", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 14
+ testRunner.And("Player2 scores 4 runs", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 15
+ testRunner.And("Player2 scores 3 runs", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 16
+ testRunner.When("Player2 gets out", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 17
+ testRunner.Then("the player1 score should win", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
         
-        [Xunit.FactAttribute(DisplayName="Player1 should be able to score runs")]
+        [Xunit.FactAttribute(DisplayName="Player2 will win the match")]
         [Xunit.TraitAttribute("FeatureTitle", "DualPlayerScore")]
-        [Xunit.TraitAttribute("Description", "Player1 should be able to score runs")]
-        public virtual void Player1ShouldBeAbleToScoreRuns()
+        [Xunit.TraitAttribute("Description", "Player2 will win the match")]
+        public virtual void Player2WillWinTheMatch()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Player1 should be able to score runs", ((string[])(null)));
-#line 11
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Player2 will win the match", ((string[])(null)));
+#line 19
 this.ScenarioSetup(scenarioInfo);
-#line 12
+#line 20
  testRunner.Given("Player1 has started a game of cricket", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 13
- testRunner.When("Player1 scores 4 runs", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 14
- testRunner.Then("The player1 score should be 4", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 21
+ testRunner.And("Player1 scores 4 runs", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 22
+ testRunner.And("Player1 scores 3 runs", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 23
+ testRunner.And("Player1 gets out", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 24
+ testRunner.And("Player2 has started a game of cricket", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 25
+ testRunner.And("Player2 scores 4 runs", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 26
+ testRunner.And("Player2 scores 4 runs", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 27
+ testRunner.When("Player2 gets out", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 28
+ testRunner.Then("the player2 score should win", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute(DisplayName="Similar scores will result in tie")]
+        [Xunit.TraitAttribute("FeatureTitle", "DualPlayerScore")]
+        [Xunit.TraitAttribute("Description", "Similar scores will result in tie")]
+        public virtual void SimilarScoresWillResultInTie()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Similar scores will result in tie", ((string[])(null)));
+#line 31
+this.ScenarioSetup(scenarioInfo);
+#line 32
+ testRunner.Given("Player1 has started a game of cricket", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 33
+ testRunner.And("Player1 scores 4 runs", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 34
+ testRunner.And("Player1 scores 3 runs", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 35
+ testRunner.And("Player1 gets out", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 36
+ testRunner.And("Player2 has started a game of cricket", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 37
+ testRunner.And("Player2 scores 4 runs", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 38
+ testRunner.And("Player2 scores 3 runs", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 39
+ testRunner.When("Player2 gets out", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 40
+ testRunner.Then("the match should be tied", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

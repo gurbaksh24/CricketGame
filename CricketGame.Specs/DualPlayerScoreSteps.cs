@@ -1,6 +1,7 @@
-﻿using System;
+﻿using FluentAssertions;
+using System;
 using TechTalk.SpecFlow;
-
+using CricketGame;
 namespace CricketGame.Specs
 {
     [Binding]
@@ -8,38 +9,56 @@ namespace CricketGame.Specs
     {
         private Cricket _player1;
         private Cricket _player2;
-
-        [When(@"Players start the game of cricket")]
-        public void WhenPlayersStartTheGameOfCricket()
-        {
-            _player1 = new Cricket();
-            _player2 = new Cricket();
-        }
-        
-        [Then(@"the scores of both players will be (.*)")]
-        public void ThenTheScoresOfBothPlayersWillBe(int p0)
-        {
-            
-        }
+        private CheckWinner game;
         [Given(@"Player(.*) has started a game of cricket")]
         public void GivenPlayerHasStartedAGameOfCricket(int playerNo)
         {
-            if(playerNo==1)
-
+            if (playerNo == 1)
+                _player1 = new Cricket();
+            else if (playerNo == 2)
+                _player2 = new Cricket();
         }
 
-        [When(@"Player(.*) scores (.*) runs")]
-        public void WhenPlayerScoresRuns(int p0, int p1)
+        [When(@"Player(.*) gets out")]
+        public void WhenPlayerGetsOut(int playerNo)
         {
-            ScenarioContext.Current.Pending();
+            if (playerNo == 1)
+                _player1.Score(-1);
+            else if (playerNo == 2)
+                _player2.Score(-1);
         }
 
-        [Then(@"The player(.*) score should be (.*)")]
-        public void ThenThePlayerScoreShouldBe(int p0, int p1)
+        [Given(@"Player(.*) scores (.*) runs")]
+        public void GivenPlayerScoresRuns(int playerNo, int runs)
         {
-            ScenarioContext.Current.Pending();
+            if (playerNo == 1)
+                _player1.Score(runs);
+            else if (playerNo == 2)
+                _player2.Score(runs);
         }
-
+        
+        [Given(@"Player(.*) gets out")]
+        public void GivenPlayerGetsOut(int playerNo)
+        {
+            if (playerNo == 1)
+                _player1.Score(-1);
+            else if (playerNo == 2)
+                _player2.Score(-1);
+        }
+        
+        [Then(@"the player(.*) score should win")]
+        public void ThenThePlayerScoreShouldWin(int playerNo)
+        {
+            game = new CheckWinner(_player1,_player2);
+            game.Winner.Should().Be("Player"+playerNo);
+            
+        }
+        [Then(@"the match should be tied")]
+        public void ThenTheMatchShouldBeTied()
+        {
+            game = new CheckWinner(_player1, _player2);
+            game.Winner.Should().Be("Draw");
+        }
 
     }
 }

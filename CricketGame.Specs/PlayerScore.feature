@@ -22,6 +22,5 @@ Scenario: Player should be able to score runs multiple times
 Scenario: Player should not be able to score runs after getting out
 	Given Player has started a game of cricket
 	And Player has scored 4 runs
-	And Player gets out
-	When Player scores 3 runs
-	Then the player score should be 7
+	When Player gets out
+	Then the player score should be 4

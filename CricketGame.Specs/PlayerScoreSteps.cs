@@ -8,8 +8,6 @@ namespace CricketGame.Specs
     public class PlayerScoreSteps
     {
         private Cricket _game;
-        private Cricket _player1;
-        private Cricket _player2;
         [When(@"Player starts a game of cricket")]
         [Given(@"Player has started a game of cricket")]
         public void WhenPlayerHasStartedAGameOfCricket()
@@ -28,13 +26,12 @@ namespace CricketGame.Specs
             _game.PlayerScore.Should().Be(score);
         }
         [Given(@"Player has scored (.*) runs")]
-        public void GivenPlayerHasScoredRuns(int p0)
+        public void GivenPlayerHasScoredRuns(int runs)
         {
-            _game.Score(4);
+            _game.Score(runs);
         }
-
-        [Given(@"Player gets out")]
-        public void GivenPlayerGetsOut()
+        [When(@"Player gets out")]
+        public void WhenPlayerGetsOut()
         {
             _game.Score(-1);
         }

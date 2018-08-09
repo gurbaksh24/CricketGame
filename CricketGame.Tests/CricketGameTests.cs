@@ -34,12 +34,48 @@ namespace CricketGame.Tests
             Assert.IsTrue(game.PlayerScore == 3);
         }
         [TestMethod]
-        public void DualPlayerScore_NewGame_ShouldBeZero()
+        public void DualGame_Player1_ShouldWin()
         {
-            var game = new Cricket();
-            Assert.IsTrue(game.PlayerScore == 0);
+            var player1 = new Cricket();
+            var player2 = new Cricket();
+            player1.Score(4);
+            player1.Score(4);
+            player1.Score(-1);
+            player2.Score(4);
+            player2.Score(3);
+            player2.Score(-1);
+            var win = new CheckWinner(player1, player2);
+            Assert.AreEqual(win.Winner, "Player1");
         }
-
-
+        [TestMethod]
+        public void DualGame_Player2_ShouldWin()
+        {
+            var player1 = new Cricket();
+            var player2 = new Cricket();
+            player1.Score(4);
+            player1.Score(3);
+            player1.Score(-1);
+            player2.Score(4);
+            player2.Score(4);
+            player2.Score(-1);
+            var win = new CheckWinner(player1, player2);
+            Assert.AreEqual(win.Winner, "Player2");
+        }
+        [TestMethod]
+        public void DualGame_Match_ShouldBeTie()
+        {
+            var player1 = new Cricket();
+            var player2 = new Cricket();
+            player1.Score(4);
+            player1.Score(3);
+            player1.Score(4);
+            player1.Score(-1);
+            player2.Score(4);
+            player2.Score(4);
+            player2.Score(3);
+            player2.Score(-1);
+            var win = new CheckWinner(player1, player2);
+            Assert.AreEqual(win.Winner, "Draw");
+        }
     }
 }
